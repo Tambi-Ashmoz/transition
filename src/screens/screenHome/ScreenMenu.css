@@ -1,0 +1,103 @@
+.screen-menu {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.screen-menu[data-is-active="false"] {
+	pointer-events: none;
+	opacity: 0;
+}
+
+.screen-menu[data-is-active="true"] {
+	opacity: 1;
+}
+
+.screen-menu-box {
+	position: absolute;
+	width: 150px;
+	height: 100%;
+	left: 0px;
+	box-sizing: border-box;
+	color: #fff;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: flex-start;
+
+	background-color: #0008;
+	border-radius: 5px;
+
+	padding-top: 60px;
+}
+
+.screen-menu-box-logo {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0px;
+	background-color: #00f3;
+	height: 50px;
+}
+
+.screen-menu-text {
+	display: inline-flex;
+	font-size: 12px;
+	padding-bottom: 6px;
+}
+
+.screen-menu-icon {
+	display: inline-flex;
+	width: 30px;
+	height: 30px;
+	background-image: url("./../../assets/redis_icon.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.screen-menu-item {
+	display: inline-flex;
+	font-size: 12px;
+	padding: 10px;
+	width: -webkit-fill-available;
+}
+
+.screen-menu-item:hover {
+	background-color: #0003;
+}
+
+.screen-menu-item:active {
+	background-color: #0006;
+}
+
+.screen-menu-logout {
+	display: inline-flex;
+	font-size: 12px;
+	padding: 10px;
+	width: 100px;
+	color: #fff;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0px;
+	right: 0;
+	background-color: #0006;
+}
+
+.screen-menu-logout:hover {
+	background-color: #0003;
+}
+
+.screen-menu-logout:active {
+	background-color: #0006;
+}
