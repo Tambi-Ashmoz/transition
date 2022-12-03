@@ -1,23 +1,34 @@
-import { ReactElement } from "react";
+export const animateDiv = (divAClassName: string, divBClassName: string) => {
+	const divA = document.querySelector("." + divAClassName);
+	const divB = document.querySelector("." + divBClassName);
 
-export const useAnimate = (refFrom: ReactElement, refTo: ReactElement, time: number) => {
-	const publish = function () {};
+	if (!divA || !divB) {
+		return;
+	}
 
-	return {};
+	let divAElements: { [key: string]: any } = getAllElementChildes(divA);
+	let divBElements: { [key: string]: any } = getAllElementChildes(divB);
+
+	let divAElementsByClass: { [key: string]: any } = getElementsByCless(divAElements);
+	let divBElementsByClass: { [key: string]: any } = getElementsByCless(divBElements);
+
+	for (const key in divAElementsByClass) {
+		if (key in divBElementsByClass) {
+			for (let i = 0; i < divAElementsByClass[key].length; i++) {
+				performAnimateDiv(divAElementsByClass[key][i], divBElementsByClass[key][0], 300, false);
+			}
+		}
+	}
 };
 
-export const animateDiv = (
-	divA: HTMLDivElement | null | undefined,
-	divB: HTMLDivElement | null | undefined,
+export const performAnimateDiv = (
+	divA: HTMLDivElement,
+	divB: HTMLDivElement,
 	duration: number,
 	isDeepClone: boolean,
 	onStart?: { (): void },
 	onEnd?: { (): void }
 ) => {
-	if (!divA || !divB) {
-		return;
-	}
-
 	onStart?.();
 
 	let rectA = divA.getBoundingClientRect();
@@ -107,4 +118,44 @@ export const animateDiv = (
 
 		onEnd?.();
 	});
+};
+
+const getAllElementChildes = (element: any) => {
+	const getAllElementChildesHelper = (element: any, arr: any[]) => {
+		element.childNodes.forEach((child: any) => {
+			arr.push(child);
+			getAllElementChildesHelper(child, arr);
+		});
+	};
+
+	let arr: any = [];
+
+	getAllElementChildesHelper(element, arr);
+
+	return arr;
+};
+
+const getElementsByCless = (elements: any) => {
+	let elementsByClass: { [key: string]: any } = {};
+
+	for (let i = 0; i < elements.length; i++) {
+		const child = elements[i];
+
+		if (!child.classList) {
+			continue;
+		}
+
+		for (let j = 0; j < child.classList.length; j++) {
+			let clazz = child.classList[j];
+
+			if (clazz.includes("-")) {
+				continue;
+			}
+
+			elementsByClass[clazz] = elementsByClass[clazz] || [];
+			elementsByClass[clazz].push(child);
+		}
+	}
+
+	return elementsByClass;
 };
