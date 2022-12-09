@@ -11,7 +11,7 @@ export default (props: Props) => {
 		<>
 			<div className="screen-menu" data-is-active={props.isActive}>
 				<div className="screen-menu-box box">
-					<div className="screen-menu-box-logo">
+					<div className="screen-menu-box-logo logobg">
 						<div className="screen-menu-icon icon"></div>
 						<h3 className="screen-menu-text text">redis</h3>
 					</div>

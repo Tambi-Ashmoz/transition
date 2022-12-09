@@ -13,7 +13,7 @@ export default (props: Props) => {
 		<>
 			<div className="screen-login" data-is-active={props.isActive}>
 				<div className="screen-login-box box">
-					<div className="screen-login-box-left">
+					<div className="screen-login-box-left logobg">
 						<div className="screen-login-icon icon"></div>
 						<h3 className="screen-login-title text">redis</h3>
 					</div>

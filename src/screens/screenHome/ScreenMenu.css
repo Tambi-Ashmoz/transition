@@ -81,17 +81,13 @@
 }
 
 .screen-menu-logout {
-	display: inline-flex;
-	font-size: 12px;
-	padding: 10px;
 	width: 100px;
 	color: #fff;
-	justify-content: center;
-	align-items: center;
 	position: absolute;
 	top: 0px;
 	right: 0;
 	background-color: #0006;
+	border: 1px solid #0006;
 }
 
 .screen-menu-logout:hover {
