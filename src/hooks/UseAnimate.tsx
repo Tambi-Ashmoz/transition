@@ -12,11 +12,21 @@ export const animateDiv = (divAClassName: string, divBClassName: string) => {
 	let divAElementsByClass: { [key: string]: any } = getElementsByCless(divAElements);
 	let divBElementsByClass: { [key: string]: any } = getElementsByCless(divBElements);
 
+	let allClasses = [];
+
 	for (const key in divAElementsByClass) {
-		if (key in divBElementsByClass) {
-			for (let i = 0; i < divAElementsByClass[key].length; i++) {
-				performAnimateDiv(divAElementsByClass[key][i], divBElementsByClass[key][0], 300, false);
-			}
+		allClasses.push(key);
+	}
+
+	for (const key in divBElementsByClass) {
+		allClasses.push(key);
+	}
+
+	for (let k = 0; k < allClasses.length; k++) {
+		const key = allClasses[k];
+
+		for (let i = 0; i < divAElementsByClass[key]?.length || i < 1; i++) {
+			performAnimateDiv(divAElementsByClass[key]?.[i], divBElementsByClass[key]?.[0], 300, false);
 		}
 	}
 };
@@ -30,6 +40,19 @@ export const performAnimateDiv = (
 	onEnd?: { (): void }
 ) => {
 	onStart?.();
+
+	let isDivAExist = true;
+	let isDivBExist = true;
+
+	if (!divA) {
+		divA = divB.cloneNode(isDeepClone) as HTMLDivElement;
+		isDivAExist = false;
+	}
+
+	if (!divB) {
+		divB = divA.cloneNode(isDeepClone) as HTMLDivElement;
+		isDivBExist = false;
+	}
 
 	let rectA = divA.getBoundingClientRect();
 	let rectB = divB.getBoundingClientRect();
@@ -92,6 +115,10 @@ export const performAnimateDiv = (
 		divAClone.style[value] = styleA[value];
 	}
 
+	if (!isDivAExist) {
+		divAClone.style.opacity = "1";
+	}
+
 	setTimeout(() => {
 		divAClone.style.transitionProperty = "all";
 		divAClone.style.transitionDuration = duration + "ms";
@@ -104,6 +131,10 @@ export const performAnimateDiv = (
 
 		for (let value of styles) {
 			divAClone.style[value] = styleB[value];
+		}
+
+		if (!isDivBExist) {
+			divAClone.style.opacity = "0";
 		}
 	}, 100);
 

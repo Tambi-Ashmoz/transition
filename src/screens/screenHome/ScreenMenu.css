@@ -19,7 +19,7 @@
 
 .screen-menu-box {
 	position: absolute;
-	width: 150px;
+	width: 20rem;
 	height: 100%;
 	left: 0px;
 	box-sizing: border-box;
@@ -96,4 +96,17 @@
 
 .screen-menu-logout:active {
 	background-color: #0006;
+}
+
+.screen-menu-map {
+	position: absolute;
+
+	left: 20rem;
+	right: 0rem;
+
+	aspect-ratio: 2048 / 1152;
+
+	background-image: url("./../../assets/world-map.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }

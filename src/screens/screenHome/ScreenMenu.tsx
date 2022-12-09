@@ -35,6 +35,7 @@ export default (props: Props) => {
 				<div className="screen-menu-logout btn" onClick={props.onClickButtonMenuLogout}>
 					Logout
 				</div>
+				<div className="screen-menu-map map"></div>
 			</div>
 		</>
 	);

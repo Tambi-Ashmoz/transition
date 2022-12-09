@@ -19,13 +19,13 @@ export default (props: Props) => {
 					</div>
 					<div className="screen-login-box-right">
 						<h3 className="screen-login-title">sign in with</h3>
-						<div className="btn" onClick={props.onClickButtonGoogle}>
+						<div className="btn margin-0_5" onClick={props.onClickButtonGoogle}>
 							Google
 						</div>
-						<div className="btn" onClick={props.onClickButtonGitHub}>
+						<div className="btn margin-0_5" onClick={props.onClickButtonGitHub}>
 							GitHub
 						</div>
-						<div className="btn" onClick={props.onClickButtonSso}>
+						<div className="btn margin-0_5" onClick={props.onClickButtonSso}>
 							SSO
 						</div>
 						<h3 className="screen-login-title">Sign in with email</h3>
