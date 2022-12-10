@@ -111,8 +111,8 @@ export const performAnimateDiv = (
 	divAClone.style.width = rectA.width + "px";
 	divAClone.style.height = rectA.height + "px";
 
-	for (let value of styles) {
-		divAClone.style[value] = styleA[value];
+	for (let key of styles) {
+		divAClone.style[key] = styleA[key];
 	}
 
 	if (!isDivAExist) {
